@@ -11,7 +11,7 @@ const dbPass = process.env.MONGODB_PASS;
 app.use(cors({
     origin: "https://skill-sync-jet.vercel.app",
     methods: ["POST", "GET"],
-    credentials: false
+    credentials: true
 }));
 app.use(express.json());
 app.use("/files", express.static("files"));
