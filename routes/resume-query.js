@@ -71,7 +71,6 @@ router.post('/resume-check', upload.single("file"), async (req, res) => {
         const dataBuffer = fs.readFileSync(filePath);
         const pdfData = await pdfParse(dataBuffer);
         const text = pdfData.text;
-        // const title = req.body.title;
         const title = 'file 1';
         const fileName = req.file.filename;
         const requirements = req.body.requirements;
