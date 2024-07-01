@@ -8,7 +8,13 @@ const JobRoute = require('./routes/job-finder');
 const dbPass = process.env.MONGODB_PASS;
 
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: [""],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 app.use(express.json());
 app.use("/files", express.static("files"));
 
