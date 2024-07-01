@@ -43,6 +43,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+app.post('/temp-fetch', (req, res) => {
+    try{
+        res.send({name: "kaif", age: "19"});
+    } catch(error){
+        res.status(404).send({error: error});
+    }
+})
+
 app.post('/resume-check', upload.single("file"), async (req, res) => {
     try{
         const filePath = req.file.path;
