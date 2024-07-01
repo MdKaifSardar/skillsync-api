@@ -86,6 +86,9 @@ router.post('/resume-check', upload.single("file"), async (req, res) => {
         })
 
         res.header('Access-Control-Allow-Origin', 'https://skill-sync-jet.vercel.app');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        res.header('Access-Control-Allow-Methods', 'POST');
+        res.header('Access-Control-Allow-Credentials', 'true');
         res.json({
           status: 'success',
           // title: title,
