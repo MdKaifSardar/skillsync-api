@@ -10,7 +10,7 @@ const dbPass = process.env.MONGODB_PASS;
 
 app.use(cors(
     {
-        origin: [""],
+        origin: ["https://skillsync-api-deployment.vercel.app"],
         methods: ["POST", "GET"],
         credentials: true
     }
