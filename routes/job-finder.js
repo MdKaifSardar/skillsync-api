@@ -16,7 +16,11 @@ router.post('/job-listings', async (req, res) => {
                 what: skills,
                 where: city,
             },
-        });
+        },
+        {
+            withCredentials: true  // Send cookies with the request
+        }
+    );
         const result = response.data.results;
         res.json(result);
     } catch (error) {
