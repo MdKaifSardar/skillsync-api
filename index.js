@@ -20,9 +20,11 @@ const upload = multer({ storage: storage });
 
 app.post('/api/resume-check', upload.single("file"), async (req, res) => {
   try{
+    console.log('hehe inside resume-check');
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
     const text = pdfData.text;
+    console.log(text);
     const fileName = req.file.originalname;
     const requirements = req.body.requirements;
     const prompt = `Analyze this resume and state in yes or no if the candidate is eligible for a job requiring skills like ${requirements} \n\n${text}`;
@@ -37,7 +39,7 @@ app.post('/api/resume-check', upload.single("file"), async (req, res) => {
     });
   } catch (error){
       console.error(error);
-      res.status(500).json({ error: 'Error processing PDF or querying Gemini' });
+      res.status(500).json({ status: error, answer: 'there is no answer' });
   } 
 });
 
