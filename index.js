@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 app.post('/api/resume-check', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
