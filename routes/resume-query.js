@@ -5,12 +5,19 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 const PDF = require('../models/pdfdetails');
+var cors = require('cors');
 
 
 const API_KEY = process.env.GEMINI_API_KEY;
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+
+app.use(cors({
+  origin: "https://skill-sync-jet.vercel.app",
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 
 
 const removeAsterisks = (text) => {
