@@ -4,6 +4,8 @@ const app = express();
 const PORT = 5000;
 // var cors = require('cors');
 const dbPass = process.env.MONGODB_PASS;
+const ResumeRoute = require('./routes/resume-query');
+const JobRoute = require('./routes/job-finder');
 
 
 // app.use(cors({
@@ -12,17 +14,15 @@ const dbPass = process.env.MONGODB_PASS;
 //   credentials: true
 // }));
 // app.options('*', cors());
+app.use(express.static('dist'));
 app.use(express.json());
-
-const ResumeRoute = require('./routes/resume-query');
-const JobRoute = require('./routes/job-finder');
 
 app.use('/api/resume', ResumeRoute);
 app.use('/api/job', JobRoute);
 
-app.get('/', (req, res) => {
-    res.send("hello the user");
-});
+// app.get('/', (req, res) => {
+//     res.send("hello the user");
+// });
 
 
 app.listen(PORT, () => {
