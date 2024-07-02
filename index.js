@@ -7,14 +7,14 @@ const ResumeRoute = require('./routes/resume-query');
 const JobRoute = require('./routes/job-finder');
 app.use(express.json());
 
-// app.use('/api/resume', ResumeRoute);
+app.use('/api/resume', ResumeRoute);
 app.use('/api/job', JobRoute);
 
 app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
-app.post('/api/resume/resume-check', upload.single("file"), async (req, res) => {
+app.post('/api/resume-check', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
