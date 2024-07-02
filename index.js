@@ -9,7 +9,10 @@ const dbPass = process.env.MONGODB_PASS;
 
 
 app.use(cors());
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "https://skill-sync-jet.vercel.app");
+  next();
+});
 app.use(express.json());
 
 app.use('/api/resume', ResumeRoute);
