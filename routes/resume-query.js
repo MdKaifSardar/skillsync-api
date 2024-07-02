@@ -53,7 +53,6 @@ router.post('/resume-check', upload.single("file"), async (req, res) => {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const respText = response.text();
-      res.header('Access-Control-Allow-Origin', 'https://skill-sync-jet.vercel.app');
       res.json({
         status: 'success',
         pdf: fileName,
