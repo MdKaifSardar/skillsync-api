@@ -7,13 +7,35 @@ const ResumeRoute = require('./routes/resume-query');
 const JobRoute = require('./routes/job-finder');
 app.use(express.json());
 
-app.use('/api/resume', ResumeRoute);
+// app.use('/api/resume', ResumeRoute);
 app.use('/api/job', JobRoute);
 
 app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
+app.post('/api/resume/resume-check', upload.single("file"), async (req, res) => {
+  try{
+    const dataBuffer = req.file.buffer;
+    const pdfData = await pdfParse(dataBuffer);
+    const text = pdfData.text;
+    const fileName = req.file.originalname;
+    const requirements = req.body.requirements;
+    const prompt = `Analyze this resume and state in yes or no if the candidate is eligible for a job requiring skills like ${requirements} \n\n${text}`;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const respText = response.text();
+    res.json({
+      status: 'success',
+      pdf: fileName,
+      answer: formatTextWithBulletsAndIndentation(removeAsterisks(respText))
+    });
+  } catch (error){
+      console.error(error);
+      res.status(500).json({ error: 'Error processing PDF or querying Gemini' });
+  } 
+});
 
 app.listen(PORT, () => {
   console.log(`listeinng to hhaa ${PORT}`);
