@@ -8,11 +8,9 @@ const JobRoute = require('./routes/job-finder');
 const dbPass = process.env.MONGODB_PASS;
 
 
-app.use(cors());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', "https://skill-sync-jet.vercel.app");
-  next();
-});
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 app.use(express.json());
 
 app.use('/api/resume', ResumeRoute);
@@ -22,15 +20,20 @@ app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
-// connecting to the mongodb database
-mongoose.connect(`mongodb+srv://mkaifsard564773:${dbPass}@pdfdb.9eent9l.mongodb.net/PdfDetails?retryWrites=true&w=majority&appName=PDFDB`)
-.then(() => {
-    console.log('The db is Connected!');
-    app.listen(PORT, () => {
-        console.log(`listeinng to hhaa ${PORT}`);
-    })
+
+app.listen(PORT, () => {
+  console.log(`listeinng to hhaa ${PORT}`);
 })
-.catch(() => {
-    console.log("The db is not connected");
-})
+
+
+// mongoose.connect(`mongodb+srv://mkaifsard564773:${dbPass}@pdfdb.9eent9l.mongodb.net/PdfDetails?retryWrites=true&w=majority&appName=PDFDB`)
+// .then(() => {
+//     console.log('The db is Connected!');
+//     app.listen(PORT, () => {
+//         console.log(`listeinng to hhaa ${PORT}`);
+//     })
+// })
+// .catch(() => {
+//     console.log("The db is not connected");
+// })
 
