@@ -9,7 +9,7 @@ const dbPass = process.env.MONGODB_PASS;
 
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://skill-sync-jet.vercel.app'
 }));
 app.use(express.json());
 
