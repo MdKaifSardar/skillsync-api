@@ -8,11 +8,7 @@ const JobRoute = require('./routes/job-finder');
 const dbPass = process.env.MONGODB_PASS;
 
 
-app.use(cors({
-    origin: "https://skill-sync-jet.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true
-}));
+app.use(cors());
 
 app.use(express.json());
 
