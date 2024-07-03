@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
+app.get('/test', (req, res) => {
+  res.send('this is a test api');
+})
+
 app.listen(PORT, () => {
   console.log(`listeinng to hhaa ${PORT}`);
 })
