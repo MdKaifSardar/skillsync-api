@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 5000;
 const dbPass = process.env.MONGODB_PASS;
-const ResumeRoute = require('./routes/resume-query');
-const JobRoute = require('./routes/job-finder');
+// const ResumeRoute = require('./routes/resume-query');
+// const JobRoute = require('./routes/job-finder');
 app.use(express.json());
 
-app.use('/api/resume', ResumeRoute);
-app.use('/api/job', JobRoute);
+app.use('/api/resume', require('./routes/resume-query'));
+app.use('/api/job', require('./routes/job-finder'));
 
 app.get('/', (req, res) => {
     res.send("hello the user");

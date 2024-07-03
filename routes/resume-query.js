@@ -146,7 +146,7 @@ router.post('/resume-get-details', upload.single("file"), async (req, res) => {
 });
 
 router.post('/test', (req, res) => {
-  res.json({message: 'this is a test area', name: 'kaif'});
+  res.send({message: 'this is a test area', name: 'kaif'});
 })
 
 module.exports = router
