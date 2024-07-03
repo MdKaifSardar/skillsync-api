@@ -65,7 +65,7 @@ router.post('/resume-check', upload.single("file"), async (req, res) => {
 });
 
 
-router.get('/resume-query', upload.single("file"), async (req, res) => {
+router.post('/resume-query', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -89,7 +89,7 @@ router.get('/resume-query', upload.single("file"), async (req, res) => {
   }
 });
 
-router.get('/hr-resume-check', upload.single("file"), async (req, res) => {
+router.post('/hr-resume-check', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -116,7 +116,7 @@ router.get('/hr-resume-check', upload.single("file"), async (req, res) => {
 });
 
 
-router.get('/resume-get-details', upload.single("file"), async (req, res) => {
+router.post('/resume-get-details', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -145,7 +145,7 @@ router.get('/resume-get-details', upload.single("file"), async (req, res) => {
   }
 });
 
-router.post('/testresume', (req, res) => {
+router.get('/testresume', (req, res) => {
   res.send('this is inide /api/resume');
   res.json({message: 'this is a test area', name: 'kaif'});
 })

@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
     res.send("hello the user");
 });
 
-app.post('/test', (req, res) => {
-  res.send('this is a test api');
+app.get('/test', (req, res) => {
+  res.send('this is a test api in the index page');
 })
 
 app.listen(PORT, () => {
