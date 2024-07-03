@@ -145,7 +145,7 @@ router.get('/resume-get-details', upload.single("file"), async (req, res) => {
   }
 });
 
-router.get('/testresume', (req, res) => {
+router.post('/testresume', (req, res) => {
   res.send('this is inide /api/resume');
   res.json({message: 'this is a test area', name: 'kaif'});
 })
