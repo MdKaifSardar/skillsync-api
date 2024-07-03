@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-router.post('/job-listings', async (req, res) => {
+router.get('/job-listings', async (req, res) => {
     try {
         const {city, country, skills} = req.body;
         const response = await fetch(`https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${process.env.ADZUNA_APP_ID}&app_key=${process.env.ADZUNA_API_KEY}&results_per_page=20&what=${skills}&where=${city}`);

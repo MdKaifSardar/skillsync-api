@@ -41,7 +41,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-router.post('/resume-check', upload.single("file"), async (req, res) => {
+router.get('/resume-check', upload.single("file"), async (req, res) => {
     try{
       const dataBuffer = req.file.buffer;
       const pdfData = await pdfParse(dataBuffer);
@@ -65,7 +65,7 @@ router.post('/resume-check', upload.single("file"), async (req, res) => {
 });
 
 
-router.post('/resume-query', upload.single("file"), async (req, res) => {
+router.get('/resume-query', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -89,7 +89,7 @@ router.post('/resume-query', upload.single("file"), async (req, res) => {
   }
 });
 
-router.post('/hr-resume-check', upload.single("file"), async (req, res) => {
+router.get('/hr-resume-check', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -116,7 +116,7 @@ router.post('/hr-resume-check', upload.single("file"), async (req, res) => {
 });
 
 
-router.post('/resume-get-details', upload.single("file"), async (req, res) => {
+router.get('/resume-get-details', upload.single("file"), async (req, res) => {
   try{
     const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
@@ -145,8 +145,8 @@ router.post('/resume-get-details', upload.single("file"), async (req, res) => {
   }
 });
 
-router.post('/test', (req, res) => {
-  res.send({message: 'this is a test area', name: 'kaif'});
+router.get('/test', (req, res) => {
+  res.json({message: 'this is a test area', name: 'kaif'});
 })
 
 module.exports = router
