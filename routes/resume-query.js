@@ -145,7 +145,7 @@ router.get('/resume-get-details', upload.single("file"), async (req, res) => {
   }
 });
 
-router.get('/test', (req, res) => {
+router.get('/testresume', (req, res) => {
   res.json({message: 'this is a test area', name: 'kaif'});
 })
 
