@@ -11,5 +11,11 @@
             "src": "/(.*)", 
             "dest": "/" 
         }
+    ],
+    "rewrites": [
+      {
+        "source": "/api/:match*",
+        "destination": "https://skillsync-api-deployment.vercel.app/api/:match*"
+      }
     ]
 }
