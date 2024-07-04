@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pdfParse = require('pdf-parse');
 require('dotenv').config();
-// const PDF = require('../models/pdfdetails');
-
-
 const API_KEY = process.env.GEMINI_API_KEY;
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(API_KEY);
